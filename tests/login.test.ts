@@ -14,7 +14,7 @@ test.describe('Login Tests', () => {
       config.credentials.password
     )
 
-    await expect(page).toHaveURL(/account/)
+    await expect(page).toHaveURL(/secure/)
   })
 
   test('should show error with invalid credentials', async ({ page }) => {
@@ -24,7 +24,6 @@ test.describe('Login Tests', () => {
     await loginPage.login('wrong@email.com', 'wrongpassword')
 
     const error = await loginPage.getErrorMessage()
-    expect(error).toContain('Invalid email or password')
-  })
+    expect(error).toContain('Your username is invalid') })
 
 })

@@ -1,8 +1,8 @@
 const config = {
-  baseUrl: 'https://demo.playwright.dev/todomvc',
+  baseUrl: 'https://the-internet.herokuapp.com',
   credentials: {
-    username: '',
-    password: ''
+    username: 'tomsmith',
+    password: 'SuperSecretPassword!'
   }
 }
 

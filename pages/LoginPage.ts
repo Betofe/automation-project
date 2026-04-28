@@ -5,18 +5,18 @@ import config from '../utils/config'
 class LoginPage extends BasePage {
 
   // These are the SELECTORS — they live here and nowhere else
-  private usernameField = '[data-test="email"]'
-  private passwordField = '[data-test="password"]'
-  private loginButton = '[data-test="login-submit"]'
-  private errorMessage = '[data-test="login-error"]'
+  private usernameField = '#username'
+  private passwordField = '#password'
+  private loginButton = 'button[type="submit"]'
+  private errorMessage = '#flash'
 
   constructor(page: Page) {
     super(page) // This calls the BasePage constructor — gives us this.page
   }
 
   async navigate() {
-    await super.navigate(`${config.baseUrl}/auth/login`)
-  }
+  await super.navigate(`${config.baseUrl}/login`)
+}
 
   async login(username: string, password: string) {
     await this.page.fill(this.usernameField, username)
