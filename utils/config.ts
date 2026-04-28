@@ -1,8 +1,8 @@
 const config = {
-  baseUrl: 'https://practicesoftwaretesting.com',
+  baseUrl: 'https://demo.playwright.dev/todomvc',
   credentials: {
-    username: 'customer@practicesoftwaretesting.com',
-    password: 'welcome01'
+    username: '',
+    password: ''
   }
 }
 
