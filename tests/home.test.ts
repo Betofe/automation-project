@@ -7,9 +7,13 @@ test.describe('Home Tests', () => {
     const homePage = new HomePage(page)
 
     await homePage.navigate()
-    await homePage.search('pliers')
+    
+    // Take screenshot to see what CI actually sees
+    await page.screenshot({ path: 'test-results/debug.png', fullPage: true })
+    console.log('Page URL:', page.url())
+    console.log('Page title:', await page.title())
 
-    // Wait for results and assert at least one product appears
+    await homePage.search('pliers')
     await expect(page.locator('[data-test="product-name"]').first()).toBeVisible()
   })
 
