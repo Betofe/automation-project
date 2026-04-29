@@ -3,27 +3,25 @@ import LoginPage from '../pages/LoginPage'
 import config from '../utils/config'
 
 test.describe('Login Tests', () => {
+  let loginPage: LoginPage
 
-  test('should login with valid credentials', async ({ page }) => {
-    const loginPage = new LoginPage(page)  // Creating an OBJECT from the class
-
+  test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page)
     await loginPage.navigate()
-    //await page.pause()
+  })
+
+  test('should login with valid credentials', async () => {
     await loginPage.login(
       config.credentials.username,
       config.credentials.password
     )
-
-    await expect(page).toHaveURL(/secure/)
+    await expect(loginPage['page']).toHaveURL(/secure/)
   })
 
-  test('should show error with invalid credentials', async ({ page }) => {
-    const loginPage = new LoginPage(page)
-
-    await loginPage.navigate()
+  test('should show error with invalid credentials', async () => {
     await loginPage.login('wrong@email.com', 'wrongpassword')
-
     const error = await loginPage.getErrorMessage()
-    expect(error).toContain('Your username is invalid') })
+    expect(error).toContain('Your username is invalid')
+  })
 
 })
